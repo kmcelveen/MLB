@@ -471,24 +471,30 @@ html {
   background-size: cover;
 }
 
-.games-section {
-  position: relative;
-}
+/* uncomment this line */
 
-.games-section2 {
+/*body {
+  overflow:hidden;
+}*/
+
+.games-section {
   position: absolute;
-  bottom: 300px;
-  left: 30px;
+  bottom: 80px;
+  left: 0px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
 }
 
 div .game-thumbnail {
-  margin-right: 20px;
-  min-width: 174px;
-  min-height: 150px;
-  display: inline-block;
-  border: 5px solid rgb(255, 255, 255);
+  margin-right: 10px;
+  max-width: 174px;
+  max-height: 70px;
+  display: inline-block  
 }
 
-div .active {
+.game-thumbnail .active {
   border: 5px solid rgb(0, 0, 136);
+  transform: scale(1.25);
 }
