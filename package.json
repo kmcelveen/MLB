@@ -14,7 +14,8 @@
     "express": "^4.14.0",
     "method-override": "^2.3.7",
     "mocha": "^3.2.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "toastr": "^2.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

@@ -473,6 +473,19 @@ body {
   background-color: black;
 }
 
+.giphy-embed {
+  overflow: hidden;
+  margin-top: 100px;
+  margin-left: 620px;
+  border-radius: 6px;
+  border-style: outset;
+}
+
+h2 {
+  margin-top: 20px;
+  height: 40px;
+}
+
 .mlb-logo {
   height: 260px;
   width: 260px;
