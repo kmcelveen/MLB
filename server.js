@@ -2,7 +2,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     path = require('path'),
     cors = require('cors')
-    utils = require('./client/utils.js'),
+    utils = require('./client/serverUtils.js'),
     app = express(),
     PORT = process.env.port || 3000;
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
- 
+
 // app.use(function (req, res) {
 //   res.setHeader('Content-Type', 'text/plain')
 //   res.write('you posted:\n')

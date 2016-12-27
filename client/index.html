@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -10,11 +11,15 @@
   </head>
   <body>
     <div class="container">
-      <div class="row games-section">
+      <div class="row" id="games-section">
       </div>
     </div>
     <script src="lib/jquery/jquery-3.1.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="app.js"></script>
+    <script src="./app.js"></script>
+    <script type="text/javascript">
+      var gameCarouselInstance = new GameCarousel();
+      gameCarouselInstance.loadToPage()
+    </script>
   </body>
 </html>
