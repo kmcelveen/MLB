@@ -474,11 +474,11 @@ body {
 }
 
 .mlb-logo {
-  height: 300px;
-  width: 300px;
+  height: 260px;
+  width: 260px;
   display: flex;
-  align-items: center;
-  justify-content: center
+  position: fixed;
+  left: 44%;
 }
 
 #games-section {
@@ -493,6 +493,7 @@ body {
 .game-thumbnail {
   width: 124px;
   height: 70px;
+  border-width: medium;
   border-style: solid;
   border-radius: 3px;
   border-color: white;
@@ -518,6 +519,8 @@ body {
 h6  {
   display: none;
   color: white;
+  font-family: Arial, Helvetica;
+  line-height: 22px;
 }
 
 

@@ -6,8 +6,8 @@
 
 - [ ] clone or fork the repo
 - [ ] cd (change directory) into the correct folder
-- [ ] `npm install`
-- [ ] In the terminal type `npm start server.js`
+- [ ] In the terminal, type `npm install`
+- [ ] In the terminal, type `npm start server.js`
 - [ ] In your browser, navigate to `localhost:3000`
 
 ## Roadmap

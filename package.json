@@ -4,7 +4,7 @@
   "description": "Coding exercise for MLB",
   "main": "index.js",
   "scripts": {
-    "test": "node server.js"
+    "start": "node server.js"
   },
   "author": "Kristina McElveen",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "method-override": "^2.3.7",
+    "mocha": "^3.2.0",
     "path": "^0.12.7"
   },
   "devDependencies": {

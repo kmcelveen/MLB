@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles.css">
     <title>MLBAM</title>
   </head>
   <body>
-    <!-- <img src="/assets/34efdcbdf796aee8744dc4ef0a6b0da4.png" class="mlb-logo" alt=""> -->
     <div class="container">
+      <img src="/assets/mlb-logo.png" class="mlb-logo" alt="">
       <div class="row" id="games-section">
       </div>
+      <audio id="audio" style="display:none;" src="/assets/MLBthemesong.mp3" controls autoplay>
     </div>
     <script src="lib/jquery/jquery-3.1.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="./app.js"></script>
+    <script src="/scripts/app.js"></script>
     <script type="text/javascript">
       var gameCarouselInstance = new GameCarousel();
-      gameCarouselInstance.loadToPage()
+      gameCarouselInstance.loadToPage();
+      gameCarouselInstance.volumePreset();
     </script>
   </body>
 </html>

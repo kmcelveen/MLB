@@ -11,6 +11,7 @@
     GameCarousel.prototype.loadToPage = function () {
       this.getAllData();
       $(window).on('keydown', this.handleArrowControls.bind(this))
+      // $(window).on('keypress', this.pauseAudio.bind(this));
     };
 
     GameCarousel.prototype.getAllData = function () {
@@ -68,4 +69,24 @@
             activePill.addClass('active');
       }
     };
+
+    GameCarousel.prototype.volumePreset = function () {
+       let audio = $('#audio');
+       audio.volume = 0.2;
+    };
+
+    GameCarousel.prototype.pauseAudio = function (e) {
+      let trackPlayedBool = true;
+      let audioTrack = document.getElementById('audio');
+      console.log(audioTrack);
+       if(e.keyCode === 0 || e.keyCode === 32){
+         e.preventDefault()
+         audioTrack.pause()
+          trackPlayedBool = false;
+       } else {
+         audioTrack.play();
+         trackPlayedBool = true;
+       }
+    };
+
 } ( jQuery ) );
