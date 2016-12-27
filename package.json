@@ -4,7 +4,7 @@
   "description": "Coding exercise for MLB",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "node server.js"
   },
   "author": "Kristina McElveen",
   "license": "ISC",
