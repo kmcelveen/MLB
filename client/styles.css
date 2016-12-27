@@ -463,18 +463,22 @@ template {
 /* Custom CSS
    ========================================================================== */
 
-html {
+body {
   background: url(ballpark.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow:hidden;
+  background-color: black;
 }
 
-/* uncomment this line */
-
-body {
-  overflow:hidden;
+.mlb-logo {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 #games-section {
@@ -482,36 +486,42 @@ body {
   display: flex;
   flex-direction: row;
   top: 40%;
-  left: 20px;
+  left: 30px;
   position: absolute;
 }
 
 .game-thumbnail {
-  margin-right: 20px;
   width: 124px;
   height: 70px;
-  margin-left: 2px;
   border-style: solid;
   border-radius: 3px;
   border-color: white;
+  margin: 0 30px 20px 30px;
+}
+
+.pill {
+  text-align: center;
 }
 
 .game-img {
   width: 118px;
   height: 64px;
 }
+
 .active {
-  border: 5px solid rgb(0, 0, 136);
+  /*border: 5px solid rgb(0, 0, 136);*/
   transform: scale(1.25);
 }
 
 /*for the meta data*/
 
-h5 {
+h6  {
   display: none;
+  color: white;
 }
-.active h5 {
+
+
+.active h6 {
   margin: 0 0 10px 0;
   display: block;
-  text-align: center;
 }
