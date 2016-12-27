@@ -1,6 +1,6 @@
 # MLBAM Challenge
 
-
+- [x] Basic Requirements
 
 ## How to get started:
 
