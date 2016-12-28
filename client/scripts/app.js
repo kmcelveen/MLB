@@ -52,7 +52,7 @@
         };
           toastr.info('Sorry kid...no games today. Dry those eyes!');
 
-          $('#games-section').append('<iframe src="../assets/crying-jordan9.gif" width="498" height="272" frameBorder="0" class="giphy-embed"></iframe>');
+          $('#games-section').append('<object src="../assets/crying-jordan9.gif" width="498" height="272" class="giphy-embed"></object>');
         }else{
           that.createThumbnails();
         }
