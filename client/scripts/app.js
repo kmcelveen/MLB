@@ -29,7 +29,6 @@
         dataType: 'json',
         cache: false
       }).done(function(data) {
-        console.log(data)
         that.arrayOfGames = data.data.games.game;
         if(!that.arrayOfGames){
           console.log("in here");
@@ -92,20 +91,20 @@
             let activePill = $('.active').prev()
             $('.active').removeClass('active');
             this.activeGame--;
-            window.scrollBy(-100, 0);
+            window.scrollBy(-150, 0);
             activePill.addClass('active');
       }else if(e.keyCode === 39 && this.activeGame < this.arrayOfGames.length - 1){
             let activePill = $('.active').next()
             $('.active').removeClass('active');
             this.activeGame++;
-            window.scrollBy(100, 0);
+            window.scrollBy(150, 0);
             activePill.addClass('active');
       }
     };
 
     GameCarousel.prototype.volumePreset = function () {
        let audio = $('#audio');
-       audio.volume = 0.2;
+       audio.volume = 0.1;
     };
 
     GameCarousel.prototype.pauseAudio = function (e) {
