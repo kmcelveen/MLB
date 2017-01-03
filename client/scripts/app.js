@@ -3,7 +3,7 @@
   console.log('Dom is loaded');
 
   let GameCarousel = function () {
-        this.arrayOfGames = '';
+        this.arrayOfGames = null;
         this.activeGame = 0;
   };
   window['GameCarousel'] = GameCarousel;
@@ -11,14 +11,14 @@
     GameCarousel.prototype.loadToPage = function () {
       this.getAllData();
       $(window).on('keydown', this.handleArrowControls.bind(this))
-      // $(window).on('keypress', this.pauseAudio.bind(this));
+      // $(window).on('keypress', this.pauseAudio);
     };
 
     GameCarousel.prototype.getAllData = function () {
       let that = this;
       let date = new Date();
-      let day = date.getDate().toString();
-      let month = date.getMonth().toString();
+      let day =  (date.getDate() < 10 ? '0' : '') + date.getDate();
+      let month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       let year = date.getFullYear().toString();
       // Provided variables to test static json url and dynamic json url.
       let staticUrl = "//gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
