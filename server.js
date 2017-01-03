@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/games', (req, res) => {
     var options = {
-      url: "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json&callback=?"
+      url: "//gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json"
     };
     request(options, (err, response, body) => {
       if(err){
