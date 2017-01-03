@@ -26,6 +26,7 @@
       $.ajax({
         method: 'GET',
         url: '/api/games',
+        dataType: "json",
         cache: false
       }).done(function(data) {
         console.log("this is the data", data)
