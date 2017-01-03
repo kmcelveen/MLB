@@ -25,10 +25,11 @@
       let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
       $.ajax({
         method: 'GET',
-        url: staticUrl,
+        url: '/api/games',
         dataType: 'json',
         cache: false
       }).done(function(data) {
+        console.log("this is the data", data)
         that.arrayOfGames = data.data.games.game;
         if(!that.arrayOfGames){
           console.log("in here");
