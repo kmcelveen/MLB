@@ -25,9 +25,7 @@
       let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
       $.ajax({
         method: 'GET',
-        crossDomain: true,
         url: '/api/games',
-        dataType: 'jsonp',
         cache: false
       }).done(function(data) {
         console.log("this is the data", data)
