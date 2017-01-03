@@ -469,16 +469,15 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow:hidden;
+  overflow: hidden;
   background-color: black;
 }
 
 .giphy-embed {
-  overflow: hidden;
   margin-top: 100px;
-  margin-left: 620px;
+  margin-left: 520px;
+  overflow: hidden;
   border-radius: 6px;
-  border-style: outset;
 }
 
 h2 {
@@ -541,8 +540,4 @@ h6  {
 .active h6 {
   margin: 0 0 10px 0;
   display: block;
-}
-
-.activepill {
-  border-color: blue;
 }
