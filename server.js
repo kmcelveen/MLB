@@ -46,7 +46,11 @@ app.get('/api/games', (req, res) => {
       if(err){
         console.log(err);
       }
-      var gameData = JSON.parse(body)
+      var gameData = JSON.parse(body);
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      res.writeHead(200);
       res.send(gameData);
     });
 });
