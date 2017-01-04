@@ -3,6 +3,9 @@
 - [x] Basic Requirements
 - [x] Testing
 
+## Screenshots
+
+![](https://i.giphy.com/4hy0kRutCf5ja.gif)
 
 ## How to get started:
 
