@@ -1,5 +1,6 @@
 ( function ( $ ) {
   'use strict';
+
   console.log('Dom is loaded');
 
   let GameCarousel = function () {
@@ -11,7 +12,6 @@
     GameCarousel.prototype.loadToPage = function () {
       this.getAllData();
       $(window).on('keydown', this.handleArrowControls.bind(this))
-      // $(window).on('keypress', this.pauseAudio);
     };
 
     GameCarousel.prototype.getAllData = function () {
@@ -21,7 +21,7 @@
       let month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       let year = date.getFullYear().toString();
       // Provided variables to test static json url and dynamic json url.
-      let staticUrl = "//gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
+      let staticUrl = "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
       let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
       $.ajax({
         method: 'GET',
@@ -30,8 +30,8 @@
         cache: false
       }).done(function(data) {
         that.arrayOfGames = data.data.games.game;
-        if(!that.arrayOfGames){
-          console.log("in here");
+        if(!that.arrayOfGames) {
+          console.log('in here');
           toastr.options = {
           "closeButton": true,
           "debug": false,
@@ -85,10 +85,10 @@
       }
     };
 
-    GameCarousel.prototype.handleArrowControls = function (e){
+    GameCarousel.prototype.handleArrowControls = function (e) {
       e.preventDefault();
       if(e.keyCode === 37 && this.activeGame != 0){
-            let activePill = $('.active').prev()
+            let activePill = $('.active').prev();
             $('.active').removeClass('active');
             this.activeGame--;
             window.scrollBy(-150, 0);
@@ -112,8 +112,8 @@
       let audioTrack = document.getElementById('audio');
       console.log(audioTrack);
        if(e.keyCode === 0 || e.keyCode === 32){
-         e.preventDefault()
-         audioTrack.pause()
+         e.preventDefault();
+         audioTrack.pause();
           trackPlayedBool = false;
        } else {
          audioTrack.play();
