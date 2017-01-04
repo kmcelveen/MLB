@@ -474,10 +474,9 @@ body {
 }
 
 .giphy-embed {
-  margin-top: 100px;
-  margin-left: 520px;
-  overflow: hidden;
-  border-radius: 6px;
+  padding-left: 60px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
@@ -527,7 +526,7 @@ img.game-img {
   transform: scale(1.25);
 }
 
-/*for the meta data*/
+/**** For the meta-data ****/
 
 h6  {
   display: none;
@@ -536,6 +535,9 @@ h6  {
   line-height: 22px;
 }
 
+h4 {
+  text-align: center;
+}
 
 .active h6 {
   margin: 0 0 10px 0;

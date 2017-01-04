@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/assets/styles.css">
     <title>MLBAM</title>
   </head>
@@ -14,11 +13,27 @@
       <img src="/assets/mlb-logo.png" class="mlb-logo" alt="">
       <div class="row" id="games-section">
       </div>
+      <div class="modal fade in" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Sorry...No games today!</h4>
+            </div>
+            <div class="modal-body">
+              <iframe src="../assets/crying-jordan9.gif" width="490" height="272" scrolling="no" class="giphy-embed" frameborder="0"></iframe>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default close2" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <audio id="audio" style="display:none;" src="/assets/MLBthemesong.mp3" controls autoplay>
     </div>
     <script src="lib/jquery/jquery-3.1.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="/scripts/app.js"></script>
     <script type="text/javascript">
       var gameCarouselInstance = new GameCarousel();
