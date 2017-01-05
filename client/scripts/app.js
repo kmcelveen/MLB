@@ -24,6 +24,7 @@
     let day = (date.getDate() < 10 ? '0' : '') + date.getDate();
     let month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
     let year = date.getFullYear().toString();
+
     // Provided variables to test static json url and dynamic json url.
     let staticUrl = "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
     let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
@@ -48,7 +49,7 @@
     let template = '';
     let that = this;
     try {
-      $.each(that.arrayOfGames, function(i, game){
+      $.each(that.arrayOfGames, function (i, game) {
         template = '<div class="pill">';
         template += '<h6>'+game.away_team_name+ ' @ ' + game.home_team_name+'</h6>';
         template +='<div class="game-thumbnail">';

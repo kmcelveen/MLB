@@ -460,8 +460,7 @@ template {
   display: none;
 }
 
-/* Custom CSS
-   ========================================================================== */
+/* ================= Custom CSS ================= */
 
 body {
   background: url(ballpark.jpg) no-repeat center center fixed;
@@ -522,7 +521,6 @@ img.game-img {
 }
 
 .active {
-  /*border: 5px solid rgb(0, 0, 136);*/
   transform: scale(1.25);
 }
 
