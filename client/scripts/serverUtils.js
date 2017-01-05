@@ -18,17 +18,5 @@ module.export = {
   errorHandler: (err, req, res, next) => {
     res.status(500);
     res.render('error', { error: err });
-  },
-
-  httpsRedirect: (req, res, next) => {
-    if (process.env.NODE_ENV === 'production') {
-      if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect('https://' + req.headers.host + req.url);
-      } else {
-        return next();
-      }
-    } else {
-      return next();
-    }
   }
-}
+};

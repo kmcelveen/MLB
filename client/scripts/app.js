@@ -1,81 +1,85 @@
-(function($) {
+( function ( $ ) {
   'use strict';
+
   console.log('Dom is loaded');
 
-  let GameCarousel = function() {
-    this.arrayOfGames = '';
+  let GameCarousel = function () {
+    this.arrayOfGames = null;
     this.activeGame = 0;
   };
-  window['GameCarousel'] = GameCarousel;
 
-  GameCarousel.prototype.loadToPage = function() {
+  window.GameCarousel = GameCarousel;
+
+  GameCarousel.prototype.loadToPage = function () {
     this.getAllData();
-    $(window).on('keydown', this.handleArrowControls.bind(this))
-    // $(window).on('keypress', this.pauseAudio.bind(this));
+    $(window).on('keydown', this.handleArrowControls.bind(this));
+    $('.close .close2').on('click', function (e) {
+      e.preventDefault();
+      $('.modal').hide();
+    });
   };
 
-  GameCarousel.prototype.getAllData = function() {
+  GameCarousel.prototype.getAllData = function () {
     let that = this;
     let date = new Date();
-    let day = date.getDate().toString();
-    let month = date.getMonth().toString();
+    let day = (date.getDate() < 10 ? '0' : '') + date.getDate();
+    let month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
     let year = date.getFullYear().toString();
     // Provided variables to test static json url and dynamic json url.
-    let staticUrl = "//gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
-    let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_" + year + "/month_" + month + "/day_" + day + "/master_scoreboard.json";
+    let staticUrl = "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
+    let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
     $.ajax({
       method: 'GET',
       url: '/api/games',
       dataType: 'json',
       cache: false
-    }).done(function(data) {
-      console.log("this is the data", data)
+    }).done(function (data) {
       that.arrayOfGames = data.data.games.game;
       if (!that.arrayOfGames) {
-        console.log("in here");
-        $('#games-section').append('<object src="../assets/crying-jordan9.gif" width="498" height="272" class="giphy-embed"></object>');
+        $('.modal').modal('show');
       } else {
         that.createThumbnails();
       }
-    }).fail(function(error) {
-      console.log(error);
+    }).fail(function (error) {
+        console.log(error);
     });
   };
 
-  GameCarousel.prototype.createThumbnails = function() {
+  GameCarousel.prototype.createThumbnails = function (){
     let template = '';
     let that = this;
     try {
-      $.each(that.arrayOfGames, function(i, game) {
+      $.each(that.arrayOfGames, function(i, game){
         template = '<div class="pill">';
-        template += '<h6>' + game.away_team_name + ' @ ' + game.home_team_name + '</h6>';
+        template += '<h6>'+game.away_team_name+ ' @ ' + game.home_team_name+'</h6>';
         template += '<div class="game-thumbnail">';
         template += '<div>';
         template += '<img class="game-img" src ="' + game.video_thumbnails.thumbnail[0].content + '" >';
         template += '</div>';
         template += '</div>';
-        template += '<h6>' + game.venue + '</h6>';
-        template += '<h6>' + game.away_time + ' ' + game.away_ampm + ' ' + game.away_time_zone + '</h6>';
+        template += '<h6>'+ game.venue +'</h6>';
+        template += '<h6>'+ game.away_time + ' ' + game.away_ampm + ' ' + game.away_time_zone +'</h6>';
         template += '</div>';
         $('#games-section').append(template);
       });
-      let gameSect = $('#games-section').children(":first");
+      let gameSect = $('#games-section').children(':first');
       gameSect.addClass('active');
-    } catch (e) {
+    }
+    catch (e) {
       console.log(e);
     }
   };
 
-  GameCarousel.prototype.handleArrowControls = function(e) {
+  GameCarousel.prototype.handleArrowControls = function (e) {
     e.preventDefault();
-    if (e.keyCode === 37 && this.activeGame != 0) {
-      let activePill = $('.active').prev()
+    if (e.keyCode === 37 && this.activeGame !== 0) {
+      let activePill = $('.active').prev();
       $('.active').removeClass('active');
       this.activeGame--;
       window.scrollBy(-150, 0);
       activePill.addClass('active');
     } else if (e.keyCode === 39 && this.activeGame < this.arrayOfGames.length - 1) {
-      let activePill = $('.active').next()
+      let activePill = $('.active').next();
       $('.active').removeClass('active');
       this.activeGame++;
       window.scrollBy(150, 0);
@@ -83,15 +87,14 @@
     }
   };
 
-  GameCarousel.prototype.volumePreset = function() {
-    let audio = $('#audio');
+  GameCarousel.prototype.volumePreset = function () {
+    const audio = $('#audio');
     audio.volume = 0.1;
   };
 
-  GameCarousel.prototype.pauseAudio = function(e) {
+  GameCarousel.prototype.pauseAudio = function (e) {
     let trackPlayedBool = true;
-    let audioTrack = document.getElementById('audio');
-    console.log(audioTrack);
+    let audioTrack = $('#audio');
     if (e.keyCode === 0 || e.keyCode === 32) {
       e.preventDefault();
       audioTrack.pause();
@@ -101,5 +104,4 @@
       trackPlayedBool = true;
     }
   };
-
-}(jQuery));
+} ( jQuery ) );

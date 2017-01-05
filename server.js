@@ -21,10 +21,10 @@ app.get('/', (req, res) => {
 
 app.get('/api/games', (req, res) => {
     var options = {
-      url: "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json"
+      url: 'http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json'
     };
     request(options, (err, response, body) => {
-      if(err){
+      if (err) {
         console.log(err);
       }
       var gameData = JSON.parse(body);
@@ -32,6 +32,6 @@ app.get('/api/games', (req, res) => {
     });
 });
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log('Listening on port '.concat(PORT));
 });
