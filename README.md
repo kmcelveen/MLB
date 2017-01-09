@@ -9,6 +9,10 @@
 
 ## How to get started:
 
+Navigate to the live version [Here](https://km-mlbam.herokuapp.com/)
+
+Or to view locally, follow the instructions below:
+
 - [ ] Clone or fork the repo
 - [ ] cd (change directory) into the correct folder
 - [ ] In the terminal, type `npm install`
