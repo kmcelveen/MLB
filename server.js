@@ -1,22 +1,22 @@
 var express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser'),
-    path = require('path'),
-    cors = require('cors'),
-    utils = require('./client/scripts/serverUtils.js'),
-    PORT = process.env.PORT || 3000;
+  app = express(),
+  bodyParser = require('body-parser'),
+  path = require('path'),
+  cors = require('cors'),
+  utils = require('./client/scripts/serverUtils.js'),
+  PORT = process.env.PORT || 3000;
 
-function httpsRedirect (req, res, next) {
+var httpsRedirect = (req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
     if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect('https://' + req.headers.host + req.url);
+      return res.redirect('https://' + req.headers.host + req.url);
     } else {
       return next();
     }
   } else {
     return next();
   }
-}
+};
 
 /** Middleware **/
 
@@ -26,11 +26,10 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(httpsRedirect);
 
-
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log('Listening on port '.concat(PORT));
 });

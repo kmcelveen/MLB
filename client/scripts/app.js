@@ -48,7 +48,7 @@
   GameCarousel.prototype.createThumbnails = function (){
     let template = '';
     let that = this;
-    try {
+
       $.each(that.arrayOfGames, function (i, game) {
         template = '<div class="pill">';
         template += '<h6>'+game.away_team_name+ ' @ ' + game.home_team_name+'</h6>';
@@ -64,10 +64,6 @@
       });
       let gameSect = $('#games-section').children(":first");
       gameSect.addClass('active');
-    }
-    catch (e) {
-      console.log(e);
-    }
   };
 
   GameCarousel.prototype.handleArrowControls = function (e) {
@@ -95,7 +91,7 @@
   GameCarousel.prototype.pauseAudio = function (e) {
     let trackPlayedBool = true;
     let audioTrack = document.getElementById('audio');
-    if (e.keyCode === 0 || e.keyCode === 32){
+    if (e.keyCode === 0 || e.keyCode === 32) {
       e.preventDefault();
       audioTrack.pause();
       trackPlayedBool = false;
