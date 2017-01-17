@@ -474,14 +474,25 @@ body {
 }
 
 .giphy-embed {
-  padding-left: 60px;
-  margin-left: auto;
-  margin-right: auto;
+  padding:0 35px 0 35px;
+}
+
+.arrowkey-img {
+  display: block;
+  margin: 0 auto;
+}
+.modal-text-style {
+  font-family: Arial, Helvetica;
+  font-weight: bold;
 }
 
 h2 {
   margin-top: 20px;
   height: 40px;
+}
+
+li {
+  list-style-type: none;
 }
 
 .mlb-logo {

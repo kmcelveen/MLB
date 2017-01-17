@@ -16,7 +16,7 @@
     $(window).on('keydown', this.pauseAudio.bind(this));
     $('.close .close2').on('click', function (e) {
       e.preventDefault();
-      $('.modal').hide();
+      $('#myModal').hide();
     });
   };
 
@@ -28,6 +28,7 @@
         $('.modal').modal('show');
       } else {
         that.createThumbnails();
+        $('#myModal1').modal('show');
       }
     }).fail(function (error) {
         console.log(error);
@@ -78,11 +79,11 @@
   GameCarousel.prototype.pauseAudio = function (e) {
     let trackPlayedBool = true;
     let audioTrack = $('#audio');
-    if (e.keyCode === 32 && trackPlayedBool !== false) {
+    if (e.keyCode === 40 && trackPlayedBool !== false) {
       e.preventDefault();
       audioTrack.trigger('pause');
       trackPlayedBool = false;
-    } else if (e.keyCode === 93 || e.keyCode === 91) {
+    } else if (e.keyCode === 38) {
       audioTrack.trigger('play');
       trackPlayedBool = true;
     }
