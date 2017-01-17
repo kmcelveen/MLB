@@ -51,7 +51,7 @@
     let template = '';
     $.each(this.arrayOfGames, function (i, game) {
       template = `<div class="pill">
-                    <h6>${game.away_team_name} <span class="versus">@</span> ${game.home_team_name}</h6>
+                    <h6>${game.away_team_name} <span class="versus">&commat;</span> ${game.home_team_name}</h6>
                       <div class="game-thumbnail">
                         <div>
                           <img class="game-img" src=${game.video_thumbnails.thumbnail[0].content}>
@@ -92,7 +92,6 @@
     let trackPlayedBool = true;
     let audioTrack = $('#audio');
     if (e.keyCode === 40 && trackPlayedBool !== false) {
-      e.preventDefault();
       audioTrack.trigger('pause');
       trackPlayedBool = false;
     } else if (e.keyCode === 38) {
