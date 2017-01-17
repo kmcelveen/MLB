@@ -487,18 +487,18 @@ h2 {
 .mlb-logo {
   height: 260px;
   width: 260px;
-  display: flex;
+  display: block;
   position: fixed;
-  left: 44%;
+  left: 50%;
+  transform: translate(-50%, 0)
 }
 
 #games-section {
   height: 200px;
   display: flex;
-  flex-direction: row;
+  position: absolute;
   top: 40%;
   left: 30px;
-  position: absolute;
 }
 
 .game-thumbnail {
@@ -521,24 +521,36 @@ img.game-img {
   border-radius: 2px;
 }
 
-.active {
-  transform: scale(1.25);
-}
+
 
 /**** For the meta-data ****/
 
 h6  {
   display: none;
+  font-weight: bold;
   color: white;
+  margin: 0 auto;
   font-family: Arial, Helvetica;
-  line-height: 22px;
 }
 
 h4 {
   text-align: center;
 }
 
+.versus {
+  color: red;
+  font-style: italic;
+  font-weight: lighter;
+}
+.active {
+  transform: scale(1.25);
+}
+
+.active .game-thumbnail {
+  border: 3px solid blue;
+}
+
 .active h6 {
-  margin: 0 0 10px 0;
   display: block;
+  margin-bottom: 5px;
 }

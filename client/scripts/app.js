@@ -1,4 +1,4 @@
-( function ( $ ) {
+(function ($) {
   'use strict';
 
   console.log('Dom is loaded');
@@ -13,6 +13,7 @@
   GameCarousel.prototype.loadToPage = function () {
     this.getAllData();
     $(window).on('keydown', this.handleArrowControls.bind(this));
+    $(window).on('keydown', this.pauseAudio.bind(this));
     $('.close .close2').on('click', function (e) {
       e.preventDefault();
       $('.modal').hide();
@@ -21,20 +22,8 @@
 
   GameCarousel.prototype.getAllData = function () {
     let that = this;
-    let date = new Date();
-    let day = (date.getDate() < 10 ? '0' : '') + date.getDate();
-    let month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
-    let year = date.getFullYear().toString();
-    // Provided variables to test static json url and dynamic json url.
-    let staticUrl = "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
-    let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
-    $.ajax({
-      method: 'GET',
-      url: '/api/games',
-      dataType: 'json',
-      cache: false
-    }).done(function (data) {
-      that.arrayOfGames = data.data.games.game;
+    $.get('/api/games').done(function (response) {
+      that.arrayOfGames = response.data.games.game;
       if (!that.arrayOfGames) {
         $('.modal').modal('show');
       } else {
@@ -45,29 +34,23 @@
     });
   };
 
-  GameCarousel.prototype.createThumbnails = function (){
+  GameCarousel.prototype.createThumbnails = function () {
     let template = '';
-    let that = this;
-    try {
-      $.each(that.arrayOfGames, function(i, game){
-        template = '<div class="pill">';
-        template += '<h6>'+game.away_team_name+ ' @ ' + game.home_team_name+'</h6>';
-        template += '<div class="game-thumbnail">';
-        template += '<div>';
-        template += '<img class="game-img" src ="' + game.video_thumbnails.thumbnail[0].content + '" >';
-        template += '</div>';
-        template += '</div>';
-        template += '<h6>'+ game.venue +'</h6>';
-        template += '<h6>'+ game.away_time + ' ' + game.away_ampm + ' ' + game.away_time_zone +'</h6>';
-        template += '</div>';
-        $('#games-section').append(template);
-      });
-      let gameSect = $('#games-section').children(':first');
-      gameSect.addClass('active');
-    }
-    catch (e) {
-      console.log(e);
-    }
+    $.each(this.arrayOfGames, function (i, game) {
+      template = `<div class="pill">
+                    <h6>${game.away_team_name} <span class="versus">@</span> ${game.home_team_name}</h6>
+                      <div class="game-thumbnail">
+                        <div>
+                          <img class="game-img" src=${game.video_thumbnails.thumbnail[0].content}>
+                        </div>
+                      </div>
+                      <h6>${game.venue}</h6>
+                      <h6>${game.away_time}  ${game.away_ampm}  ${game.away_time_zone}</h6>
+                    </div>`;
+      $('#games-section').append(template);
+    });
+    let firstThumbNail = $('#games-section').children(':first');
+    firstThumbNail.addClass('active');
   };
 
   GameCarousel.prototype.handleArrowControls = function (e) {
@@ -88,20 +71,20 @@
   };
 
   GameCarousel.prototype.volumePreset = function () {
-    const audio = $('#audio');
+    let audio = $('#audio');
     audio.volume = 0.1;
   };
 
   GameCarousel.prototype.pauseAudio = function (e) {
     let trackPlayedBool = true;
     let audioTrack = $('#audio');
-    if (e.keyCode === 0 || e.keyCode === 32) {
+    if (e.keyCode === 32 && trackPlayedBool !== false) {
       e.preventDefault();
-      audioTrack.pause();
+      audioTrack.trigger('pause');
       trackPlayedBool = false;
-    } else {
-      audioTrack.play();
+    } else if (e.keyCode === 93 || e.keyCode === 91) {
+      audioTrack.trigger('play');
       trackPlayedBool = true;
     }
   };
-} ( jQuery ) );
+}(jQuery));
