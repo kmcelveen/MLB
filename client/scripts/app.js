@@ -27,10 +27,10 @@
 
     // Provided variables to test static json url and dynamic json url.
     let staticUrl = "http://gdx.mlb.com/components/game/mlb/year_2016/month_05/day_20/master_scoreboard.json";
-    let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.json";
+    let dynamicUrl = "http://gdx.mlb.com/components/game/mlb/year_" + year + "/month_" + month + "/day_" + day + "/master_scoreboard.json";
     $.ajax({
       method: 'GET',
-      url: staticUrl,
+      url: dynamicUrl,
       dataType: 'json',
       cache: false
     }).done(function (data) {
@@ -45,7 +45,7 @@
     });
   };
 
-  GameCarousel.prototype.createThumbnails = function (){
+  GameCarousel.prototype.createThumbnails = function () {
     let template = '';
     let that = this;
 
